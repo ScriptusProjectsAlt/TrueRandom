@@ -40,6 +40,12 @@ Fast • Lightweight • Entropy Powered
 
 # <img src="https://cdn-icons-png.flaticon.com/512/906/906334.png" width="22"> Installation
 
+Proper Install:
+```bash
+pip install git+https://github.com/ScriptusProjectsAlt/TrueRandom.git
+```
+
+
 Install from source:
 
 ```bash
