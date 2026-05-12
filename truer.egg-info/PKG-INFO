@@ -1,3 +1,12 @@
+Metadata-Version: 2.4
+Name: truer
+Version: 0.1.0
+Summary: Entropy-based random number generation for Python
+Author: Your Name
+License: MIT
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
 <div align="center">
 
 # TrueR
@@ -40,18 +49,16 @@ Fast • Lightweight • Entropy Powered
 
 # <img src="https://cdn-icons-png.flaticon.com/512/906/906334.png" width="22"> Installation
 
-Install from source:
-
 ```bash
-git clone https://github.com/ScriptusProjectsAlt/TrueRandom
-cd TrueRandom
-pip install .
+pip install truer
 ```
 
-Or install in development mode:
+Or install manually:
 
 ```bash
-pip install -e .
+git clone https://github.com/yourname/truer
+cd truer
+pip install .
 ```
 
 ---
@@ -63,54 +70,9 @@ from truer import TrueR
 
 rng = TrueR()
 
-print(rng.randint(1, 100))  # Random integer: 42
-print(rng.random())          # Random float: 0.123456789
-print(rng.randbytes(8))      # Random bytes: b'\x01\x23\x45\x67\x89\xab\xcd\xef'
-```
-
----
-
-# <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" width="22"> Usage
-
-## Basic Usage
-
-```python
-from truer import TrueR
-
-# Create an RNG instance
-rng = TrueR()
-
-# Generate a random integer between 1 and 100
-random_int = rng.randint(1, 100)
-
-# Generate a random float between 0.0 and 1.0
-random_float = rng.random()
-
-# Generate 16 random bytes
-random_bytes = rng.randbytes(16)
-```
-
-## Configuration Options
-
-```python
-# Use only OS entropy (disable CPU jitter for faster generation)
-rng = TrueR(use_cpu_jitter=False)
-
-# Default behavior (uses both OS entropy and CPU jitter)
-rng = TrueR(use_cpu_jitter=True)  # or simply TrueR()
-```
-
-## Integration Examples
-
-```python
-# Simulate a dice roll
-dice_roll = rng.randint(1, 6)
-
-# Generate random bytes for cryptographic use
-key = rng.randbytes(32)  # 256-bit key
-
-# Generate a random float for probability simulations
-probability = rng.random()
+print(rng.randint(1, 100))
+print(rng.random())
+print(rng.choice(["apple", "banana", "orange"]))
 ```
 
 ---
@@ -125,27 +87,22 @@ from truer import TrueR
 rng = TrueR()
 
 number = rng.randint(1, 999999)
-print(number)  # e.g., 123456
+print(number)
 ```
 
 ## Random Float
 
 ```python
 value = rng.random()
-print(value)  # e.g., 0.987654321
+print(value)
 ```
 
-## Random Bytes
+## Random Choice
 
 ```python
-bytes_data = rng.randbytes(16)
-print(bytes_data)  # e.g., b'\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f'
-```
+items = ["red", "blue", "green"]
 
-## Disable CPU Jitter (Optional)
-
-```python
-rng = TrueR(use_cpu_jitter=False)  # Uses only OS entropy
+print(rng.choice(items))
 ```
 
 ---
@@ -174,32 +131,17 @@ PRNG systems are deterministic:
 
 # <img src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" width="22"> Project Structure
 
-```
+```txt
 truer/
 │
 ├── truer/
 │   ├── __init__.py
-│   ├── core/
-│   │   ├── engine.py
-│   │   └── rng.py
-│   ├── entropy/
-│   │   ├── base.py
-│   │   ├── cpu_jitter.py
-│   │   ├── mixer.py
-│   │   ├── microphone.py
-│   │   └── os_entropy.py
-│   └── utils/
-│       ├── conversation.py
-│       └── validation.py
+│   ├── core.py
+│   └── entropy.py
 │
-├── examples/
-│   ├── basic_usage.py
-│   ├── demo.py
-│   └── entropy_mix.py
 ├── tests/
-│   └── test_rng.py
-├── pyproject.toml
 ├── README.md
+├── pyproject.toml
 └── LICENSE
 ```
 
@@ -210,25 +152,19 @@ truer/
 Clone the repository:
 
 ```bash
-git clone https://github.com/ScriptusProjectsAlt/TrueRandom
+git clone https://github.com/yourname/truer
 ```
 
-Install in development mode:
+Install dependencies:
 
 ```bash
-pip install -e .
+pip install -r requirements.txt
 ```
 
 Run tests:
 
 ```bash
-python -m pytest tests/
-```
-
-Or run a specific test:
-
-```bash
-python -c "from tests.test_rng import test_randint; test_randint(); print('Test passed')"
+pytest
 ```
 
 ---
